@@ -1,5 +1,8 @@
 package com.telusko.demo.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +32,7 @@ public class AlienController {
 	
 	@RequestMapping("/aliens")
 	@ResponseBody
-	public String getAliens() {
+	public List<Alien> getAliens() {
 //		ModelAndView mv = new ModelAndView("showAlien.jsp");
 //		Alien alien = repo.findById(aid).orElse(new Alien());
 //		System.out.println(repo.findByTech("Java"));
@@ -37,12 +40,12 @@ public class AlienController {
 //		System.out.println(repo.findByTechSorted("Java"));
 //		mv.addObject(alien);
 //		return mv;
-		return repo.findAll().toString();
+		return repo.findAll();
 	}
 	
 	@RequestMapping("/alien/{aid}")
 	@ResponseBody
-	public String getAlien(@PathVariable("aid") int aid) {
-		return repo.findById(aid).toString();
+	public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+		return repo.findById(aid);
 	}
 }
