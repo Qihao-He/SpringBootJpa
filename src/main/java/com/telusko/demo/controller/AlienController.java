@@ -30,7 +30,8 @@ public class AlienController {
 		return "home.jsp";
 	}
 	
-	@RequestMapping("/aliens")
+//	@RequestMapping(path="/aliens", produces= {"application/xml"})
+	@RequestMapping(path="/aliens")
 	@ResponseBody
 	public List<Alien> getAliens() {
 //		ModelAndView mv = new ModelAndView("showAlien.jsp");
